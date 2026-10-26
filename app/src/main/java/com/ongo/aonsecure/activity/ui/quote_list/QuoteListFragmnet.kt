@@ -1102,6 +1102,7 @@ class QuoteListFragmnet() : Fragment() {
     private  fun tokenRefreshAPI(){
         val updateHandler = Handler() //using handler to get the internet connection
         val runnable = Runnable {
+            if (!isAdded) return@Runnable
             if ((requireContext() as MainActivity).checkInternet())
                 viewModel.tokenRefrehAPI()
         }
@@ -1110,6 +1111,7 @@ class QuoteListFragmnet() : Fragment() {
     private fun callViewModelForAPI() {
         val updateHandler = Handler() //using handler to get the internet connection
         val runnable = Runnable {
+            if (!isAdded) return@Runnable
             if (isInternetAvailable(mContext))
                 tokenRefreshAPI()
             // this is for online check when internet is on
