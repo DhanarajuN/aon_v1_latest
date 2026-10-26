@@ -1,0 +1,148 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.objectbox'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    namespace "com.ongo.aonsecure"
+    compileSdkVersion 35
+    ndkVersion "26.3.11579264"
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    defaultConfig {
+        applicationId "com.ongo.aonsecure"
+        minSdkVersion 26
+        targetSdkVersion 35
+        versionCode 14
+        versionName "1.10"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        debug {
+            // buildConfigField "String", "BASE_URL", '"https://aonuatapi.gosure.ai:9081"'
+            buildConfigField "String", "BASE_URL", '"https://cli.gosure.ai:9081"'
+        }
+        release {
+            minifyEnabled false
+            shrinkResources false
+            crunchPngs false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // buildConfigField "String", "BASE_URL", '"https://aonuatapi.gosure.ai:9081"'
+            buildConfigField "String", "BASE_URL", '"https://cli.gosure.ai:9081"'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // AndroidX Core
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Lifecycle Components
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.8.7'
+
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.8.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.8.3'
+
+    // RecyclerView & UI Components
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation project(":pdfconvertlib")
+
+    // Networking - Retrofit & OkHttp
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+    compileOnly "org.glassfish:javax.annotation:3.1.1"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.21"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    // Room Database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$roomVersion"
+
+    // PDF Generator
+    implementation 'com.itextpdf:itextg:5.5.10'
+
+    // ObjectBox Database
+    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
+
+    // JSON Parser
+    implementation 'com.google.code.gson:gson:2.11.0'
+
+    // Firebase SDKs (Updated)
+    implementation 'com.google.firebase:firebase-analytics-ktx:22.1.2'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:19.2.1'
+    implementation 'com.google.firebase:firebase-messaging-ktx:24.1.2'
+    implementation 'com.google.firebase:firebase-database-ktx:21.0.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}
+
+
+/***
+ *  ----- firebase console login creds -----
+ *  ongoframework.cx@gmail.com
+ *  Apple@321
+ */
+
+
+/*
+keystoreDetails
+fileName:aon_final.jks
+keystorePassword: android
+keyAlias:key0
+keyPassword:android
+*/
+
+

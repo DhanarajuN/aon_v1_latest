@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+
+    <color name="colorPrimary">#680205</color>
+
+    <color name="colorPrimaryDark">#680205</color>
+
+    <color name="colorAccent">#680205</color>
+
+    <color name="transparent">@android:color/transparent</color>
+
+    <color name="white">@android:color/white</color>
+
+    <color name="black">@android:color/black</color>
+
+    <color name="dark_grey">#303030</color>
+
+    <color name="text_color">#1D1C1A</color>
+
+    <color name="pdf_pink_lite">#F4DADA</color>
+
+    <color name="pdf_pink_med">#F7CBC9</color>
+
+    <color name="rted_col">#BD3026</color>
+
+    <color name="blue">#1DA6DC</color>
+
+    <color name="light_grey">#D3D3D3</color>
+    <color name="light_grey1">#b8afb4</color>
+
+
+</resources>

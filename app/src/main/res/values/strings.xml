@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">CLI Premium Calculator</string>
+    <string name="insurance_premium_calculator">INSURANCE PREMIUM CALCULATOR</string>
+    <string name="login">Login</string>
+    <string name="username">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="first_time">First Time User?</string>
+    <string name="help">Help?</string>
+    <string name="change_pwd">Change Password?</string>
+    <string name="forgot_pwd">Forgot Password?</string>
+    <string name="remember_me">Remember me</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="terms">Terms &amp; Conditions</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="name">NAME</string>
+    <string name="back_msg">Please press again to exit</string>
+    <string name="insurer">INSURER</string>
+    <string name="category">CATEGORY</string>
+    <string name="product">PRODUCT</string>
+    <string name="funding_type">FUNDING TYPE</string>
+    <string name="gender">GENDER</string>
+    <string name="zone">ZONE</string>
+    <string name="dob">DOB</string>
+    <string name="age">AGE</string>
+    <string name="coverage">COVERAGE</string>
+    <string name="tenure">TENURE</string>
+    <string name="remarks">REMARKS</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="mobile_number">MOBILE NUMBER</string>
+    <string name="email">EMAIL ID</string>
+    <string name="device">DEVICE TYPE</string>
+    <string name="imei">IMEI/SERIAL NUMBER</string>
+    <string name="change_device">Change Device?</string>
+    <string name="premium_calculator">Premium Calculator</string>
+    <string name="rmid">FID</string>
+    <string name="loan_amount">LOAN AMOUNT</string>
+    <string name="Coverage">COVERAGE</string>
+    <string name="logout">Logout</string>
+    <string name="noproducts">No Products are found to this insurer</string>
+
+    <string-array name="Languages">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Swift</item>
+        <item>Python</item>
+        <item>Scala</item>
+        <item>Perl</item>
+    </string-array>
+    <string name="navigation_drawer_open">Open Drawer</string>
+    <string name="navigation_drawer_close">Close Drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calculator_version">CALCULATOR VERSION</string>
+    <string name="loan_type">LOAN TYPE</string>
+    <string name="d_o_b">D.O.B</string>
+    <string name="quote_num">QUOTE NUMBER</string>
+    <string name="generated_on">GENERATED ON</string>
+    <string name="valid_upto">Valid Upto</string>
+    <string name="userid">USER ID</string>
+    <string name="user_name">USER NAME</string>
+    <string name="medical_req">MEDICAL REQ.</string>
+    <string name="benefit_type">BENEFIT TYPE</string>
+    <string name="memes_covered">MEMBERS COVERED</string>
+    <string name="viewModel">STATUS</string>
+    <string name="device_id">DEVICE ID</string>
+    <string name="payment_term">PAYMENT TERM</string>
+    <string name="premium">PREMIUM</string>
+    <string name="tax">TAX</string>
+    <string name="total">TOTAL</string>
+    <string name="save">SAVE</string>
+    <string name="edit">EDIT</string>
+    <string name="download">DOWNLOAD</string>
+    <string name="view_details">View Details</string>
+    <string name="download_pdf">Download PDF</string>
+    <string name="change_request_form">Change Request Form</string>
+    <string name="submit">Submit</string>
+    <string name="share">Share</string>
+    <string name="sync_server">Sync With Server</string>
+    <string name="quote_details">Quote Details</string>
+    <string name="search_here">search here --</string>
+    <string name="filters">Filters</string>
+    <string name="quote_valid_until">QUOTE VALID UNTIL</string>
+    <string name="Coverage_INR">COVERAGE(INR)</string>
+    <string name="loan_amount_inr">LOAN AMOUNT(INR)</string>
+    <string name="tenure_months">TENURE(YEARS)</string>
+    <string name="status">STATUS</string>
+    <string name="age_year">AGE(YEAR)</string>
+    <string name="change_password_title">Change Password</string>
+    <string name="old_password">OLD PASSWORD</string>
+    <string name="new_password">NEW PASSWORD</string>
+    <string name="confirm_password">CONFIRM PASSWORD</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="share_pdf">Share PDF</string>
+    <string name="dataloading">Data loading please wait!</string>
+    <string name="contractno">CONTRACT NUMBER</string>
+    <string name="supportEmail">support.cli@goaon.in</string>
+</resources>

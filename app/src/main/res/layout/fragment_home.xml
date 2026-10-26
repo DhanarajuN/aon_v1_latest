@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.HomeFragment">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.ongo.aonsecure.model.HomeFragInfo" />
+
+        <variable
+            name="viewModel"
+            type="com.ongo.aonsecure.activity.ui.home.HomeViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.getLoadingVisibility()}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/head_constraint"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/login_head"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="16sp"
+                android:autoSizeMinTextSize="15sp"
+                android:autoSizeStepGranularity="2sp"
+                android:layout_marginTop="80dp"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/bottom_rounded_corner"
+                android:drawableLeft="@drawable/ic_calculator"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="10dp"
+                android:text="@string/premium_calculator"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="wrap" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/head_constraint"
+            android:layout_marginTop="50dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/sync_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="70dp"
+                    android:paddingBottom="5dp"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/sync_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/rounded_corner"
+                        android:fontFamily="@font/roboto_regular"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:visibility="gone"
+                        android:text="@string/sync_server"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/zone_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/sync_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sync_layout">
+
+                    <TextView
+                        android:id="@+id/zone_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/zone"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/zone_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/zone_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/zone_text_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="35dp"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/zone_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/zone_layout">
+
+                    <TextView
+                        android:id="@+id/zone_head_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/zone"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/zone_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:theme="@style/EditTextTheme"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/zone_et"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:enabled="false"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="left"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::onLoneTyped}"
+                            android:paddingLeft="140dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/insurer_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/zone_text_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/zone_text_layout">
+
+                    <TextView
+                        android:id="@+id/insurer_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/insurer"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/insure_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:id="@+id/view_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/insure_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/category_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/insurer_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/insurer_layout">
+
+                    <TextView
+                        android:id="@+id/category_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/category"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/category_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/category_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/product_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/category_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/category_layout">
+
+                    <TextView
+                        android:id="@+id/product_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/product"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/product_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/product_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/funding_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/product_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/product_layout">
+
+                    <TextView
+                        android:id="@+id/funding_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/funding_type"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/funding_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/funding_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/gender_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/funding_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/funding_layout">
+
+                    <TextView
+                        android:id="@+id/gender_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/gender"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/gender_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/gender_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/loan_type_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/gender_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gender_layout">
+
+                    <TextView
+                        android:id="@+id/loan_type_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/loan_type"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/loan_type_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/loan_type_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/loan_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/loan_type_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/loan_type_layout">
+
+                    <TextView
+                        android:id="@+id/loan_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/loan_amount_inr"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/loan_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/loan_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="left"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::onLoneTyped}"
+                            android:paddingLeft="160dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            android:theme="@style/EditTextTheme" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/coverage_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/loan_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/loan_layout">
+
+                    <TextView
+                        android:id="@+id/coverage_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/Coverage_INR"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/coverage_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/coverage_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="left"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::onCoverageTyped}"
+                            android:paddingLeft="140dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            android:theme="@style/EditTextTheme" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tenure_txt_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="35dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/coverage_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/coverage_layout">
+
+                    <TextView
+                        android:id="@+id/tenure_txt_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/tenure_months"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tenure_txt_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/tenure_txt_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="left"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::onTenureAutoTextEntered}"
+                            android:paddingLeft="140dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            android:theme="@style/EditTextTheme" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tenure_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="45dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/coverage_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/coverage_layout">
+
+                    <TextView
+                        android:id="@+id/tenure_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="40dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/tenure"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/tenure_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="145dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:theme="@style/EditTextTheme" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/tenure_spinner"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/text_color"
+                        android:theme="@style/EditTextTheme" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/text_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tenure_txt_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tenure_txt_layout">
+
+                    <LinearLayout
+                        android:id="@+id/lin_text_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <RelativeLayout
+                            android:id="@+id/dob_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="32dp"
+                            android:layout_weight="0.8">
+
+                            <TextView
+                                android:id="@+id/dob_head"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="28dp"
+                                android:layout_marginTop="20dp"
+                                android:autoSizeMaxTextSize="15sp"
+                                android:autoSizeMinTextSize="10sp"
+                                android:autoSizeStepGranularity="2sp"
+                                android:autoSizeTextType="uniform"
+                                android:fontFamily="@font/roboto_bold"
+                                android:gravity="center"
+                                android:text="@string/dob"
+                                android:textColor="@color/text_color"
+                                android:textSize="15sp" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/dob_til"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginEnd="25dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/dob_et"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:autoSizeMaxTextSize="15sp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:autoSizeStepGranularity="2sp"
+                                    android:autoSizeTextType="uniform"
+                                    android:ellipsize="end"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:gravity="left"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:onTextChanged="@{viewModel::onDateTyped}"
+                                    android:paddingLeft="50dp"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/text_color"
+                                    android:textSize="15sp"
+                                    android:theme="@style/EditTextTheme" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/error_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lin_text_layout"
+                        android:layout_marginLeft="38dp"
+                        android:layout_marginTop="-10dp"
+                        android:layout_marginRight="38dp"
+                        android:autoSizeMaxTextSize="9sp"
+                        android:autoSizeMinTextSize="7sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="right"
+                        android:text="Age should be in between 18 to 70!"
+                        android:textColor="@color/rted_col"
+                        android:textSize="9sp"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/age_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout">
+
+                    <TextView
+                        android:id="@+id/age_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/age_year"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/age_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/age_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:enabled="false"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:paddingLeft="50dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            android:theme="@style/EditTextTheme" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/remark_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/age_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/age_layout">
+
+                    <TextView
+                        android:id="@+id/remark_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/remarks"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/remark_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/remark_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="left"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::onRemarksTyped}"
+                            android:paddingLeft="140dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            android:theme="@style/EditTextTheme" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/contract_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/remark_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/remark_layout">
+
+                    <TextView
+                        android:id="@+id/contract_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginTop="20dp"
+                        android:autoSizeMaxTextSize="15sp"
+                        android:autoSizeMinTextSize="10sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/contractno"
+                        android:textColor="@color/text_color"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/contract_til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="25dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/contractno_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoSizeMaxTextSize="15sp"
+                            android:autoSizeMinTextSize="10sp"
+                            android:autoSizeStepGranularity="2sp"
+                            android:autoSizeTextType="uniform"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="left"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:maxLines="1"
+                            android:onTextChanged="@{viewModel::onContractNoTyped}"
+                            android:paddingLeft="140dp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/text_color"
+                            android:textSize="15sp"
+                            android:theme="@style/EditTextTheme" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/calc_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_corner"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/calculate"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/contract_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contract_layout" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/offline_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@color/text_color"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:mutableVisibility="@{viewModel.getOfflineProgressLayout()}">
+
+            <ProgressBar
+                android:id="@+id/progressBar_offline"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminateDrawable="@drawable/progress"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Offline quote sync with server in progress..."
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

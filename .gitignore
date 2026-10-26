@@ -1,0 +1,11 @@
+*.jks
+*.pepk
+local.properties
+.gradle
+.idea
+*.iml
+build/
+.cxx
+.DS_Store
+*.aab
+*.apk

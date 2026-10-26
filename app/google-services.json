@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399135879114",
+    "project_id": "cli-premium-calculator",
+    "storage_bucket": "cli-premium-calculator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399135879114:android:14810bd50dd18991eb2933",
+        "android_client_info": {
+          "package_name": "com.ongo.aonsecure"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBoIgGLIW-JjNfrEoQ_AzjzxvFM1HCgYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ongo.aonsecure">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+
+
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name="com.ongo.aonsecure.database.Configuration"
+        android:allowBackup="false"
+
+
+
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/tractor"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/tractor"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="false">
+        <activity
+            android:name="com.ongo.aonsecure.activity.WebActivity"
+
+            android:exported="false" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.TestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.HomeActivity1"
+            android:exported="false" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.HelpActivity"
+            android:exported="false" />
+        <activity android:name="com.ongo.aonsecure.activity.ForgotPasswordActivity"
+            />
+        <activity
+            android:name="com.ongo.aonsecure.activity.ChangePasswordActivity"
+             />
+        <activity
+            android:name="com.ongo.aonsecure.activity.QuoteDetailActivity"
+            android:theme="@style/minwidth" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.QuoteActivity"
+            android:theme="@style/minwidth" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.ChangeRequestActivity"
+             />
+        <activity
+            android:name="com.ongo.aonsecure.activity.ui.filter.FilterActivity"
+            android:theme="@style/minwidth" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.SignUpActivity"
+             />
+        <activity android:name="com.ongo.aonsecure.pdf_gen.PdfViewGenerator" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.HomeActivity"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ongo.aonsecure.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.ongo.aonsecure.activity.LoginActivity"
+             />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+
+        <service
+            android:name="com.ongo.aonsecure.utils.MessageService"
+            android:exported="false" />
+        <service
+            android:name="com.ongo.aonsecure.utils.OfflineService"
+            android:exported="false" /> <!-- The below code is for android OS version below N -->
+        <receiver
+            android:name="com.ongo.aonsecure.utils.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
