@@ -1,6 +1,7 @@
 package com.ongo.aonsecure.activity
 
 import android.Manifest
+import androidx.activity.addCallback
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -49,6 +50,7 @@ class HomeActivity1 : BaseCompatActivity() , FragmentCallback {
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerBackHandler()
        // setContentView(R.layout.activity_home1)
         binding = DataBindingUtil.setContentView(
             this,
@@ -84,9 +86,11 @@ class HomeActivity1 : BaseCompatActivity() , FragmentCallback {
 
 
     }
-    override fun onBackPressed() {
-        setResult(RESULT_BACK_PRESSED)
-      finish()
+    private fun registerBackHandler() {
+        onBackPressedDispatcher.addCallback(this) {
+            setResult(RESULT_BACK_PRESSED)
+            finish()
+        }
     }
     companion object {
         const val RESULT_BACK_PRESSED = 123

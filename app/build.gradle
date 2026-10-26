@@ -7,7 +7,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     namespace "com.ongo.aonsecure"
-    compileSdkVersion 35
+    compileSdkVersion 36
     ndkVersion "26.3.11579264"
 
     buildFeatures {
@@ -23,9 +23,9 @@ android {
     defaultConfig {
         applicationId "com.ongo.aonsecure"
         minSdkVersion 26
-        targetSdkVersion 35
-        versionCode 14
-        versionName "1.10"
+        targetSdkVersion 36
+        versionCode 15
+        versionName "1.11"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

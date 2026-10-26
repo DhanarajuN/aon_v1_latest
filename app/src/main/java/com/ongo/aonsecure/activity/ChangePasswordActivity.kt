@@ -1,6 +1,7 @@
 package com.ongo.aonsecure.activity
 
 import android.content.Intent
+import androidx.activity.addCallback
 import android.os.Build
 import android.os.Bundle
 import android.text.InputFilter
@@ -34,6 +35,7 @@ class ChangePasswordActivity : BaseCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerBackHandler()
         binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_change_password
@@ -238,10 +240,12 @@ class ChangePasswordActivity : BaseCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, MainActivity::class.java))
-
+    private fun registerBackHandler() {
+        onBackPressedDispatcher.addCallback(this) {
+            isEnabled = false
+            onBackPressedDispatcher.onBackPressed()
+            startActivity(Intent(this@ChangePasswordActivity, MainActivity::class.java))
+        }
     }
 
     private fun callPushNotification() {

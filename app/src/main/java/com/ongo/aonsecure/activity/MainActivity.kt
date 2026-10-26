@@ -1,6 +1,7 @@
 package com.ongo.aonsecure.activity
 
 import android.Manifest
+import androidx.activity.addCallback
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -75,6 +76,7 @@ class MainActivity : BaseCompatActivity(), FragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerBackHandler()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Check for force update
@@ -332,12 +334,14 @@ class MainActivity : BaseCompatActivity(), FragmentCallback {
             }
     }
 
-    override fun onBackPressed() {
-        val quoteListFragment = QuoteListFragmnet.newInstance()
-        openFragment(quoteListFragment)
-        if (getCurrentFragment() !is QuoteListFragmnet) {
-        } else {
-            super.onBackPressed()
+    private fun registerBackHandler() {
+        onBackPressedDispatcher.addCallback(this) {
+            val quoteListFragment = QuoteListFragmnet.newInstance()
+            openFragment(quoteListFragment)
+            if (getCurrentFragment() is QuoteListFragmnet) {
+                isEnabled = false
+                onBackPressedDispatcher.onBackPressed()
+            }
         }
     }
 

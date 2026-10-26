@@ -1,6 +1,7 @@
 package com.ongo.aonsecure.activity
 
 import android.content.Intent
+import androidx.activity.addCallback
 import android.os.Build
 import android.os.Bundle
 import android.widget.ImageView
@@ -32,6 +33,7 @@ class ForgotPasswordActivity : BaseCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerBackHandler()
 //        val window = window
 //        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 //        window.statusBarColor = resources.getColor(R.color.white)
@@ -185,10 +187,12 @@ class ForgotPasswordActivity : BaseCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, LoginActivity::class.java))
-
+    private fun registerBackHandler() {
+        onBackPressedDispatcher.addCallback(this) {
+            isEnabled = false
+            onBackPressedDispatcher.onBackPressed()
+            startActivity(Intent(this@ForgotPasswordActivity, LoginActivity::class.java))
+        }
     }
 
     private fun callPushNotification() {

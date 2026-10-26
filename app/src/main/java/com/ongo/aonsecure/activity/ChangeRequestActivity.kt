@@ -1,6 +1,7 @@
 package com.ongo.aonsecure.activity
 
 import android.Manifest
+import androidx.activity.addCallback
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -45,6 +46,7 @@ class ChangeRequestActivity : BaseCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerBackHandler()
 
         binding = DataBindingUtil.setContentView(
             this,
@@ -329,8 +331,11 @@ class ChangeRequestActivity : BaseCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, LoginActivity::class.java))
+    private fun registerBackHandler() {
+        onBackPressedDispatcher.addCallback(this) {
+            isEnabled = false
+            onBackPressedDispatcher.onBackPressed()
+            startActivity(Intent(this@ChangeRequestActivity, LoginActivity::class.java))
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.ongo.aonsecure.activity
 
 import android.Manifest
+import androidx.activity.addCallback
 import android.Manifest.permission.READ_PHONE_STATE
 import android.app.Activity
 import android.content.Context
@@ -49,6 +50,7 @@ class SignUpActivity : BaseCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        registerBackHandler()
 //        val window = window
 //        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 //        window.statusBarColor = resources.getColor(R.color.white)
@@ -373,8 +375,11 @@ class SignUpActivity : BaseCompatActivity() {
         startService(intent)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent(this, LoginActivity::class.java))
+    private fun registerBackHandler() {
+        onBackPressedDispatcher.addCallback(this) {
+            isEnabled = false
+            onBackPressedDispatcher.onBackPressed()
+            startActivity(Intent(this@SignUpActivity, LoginActivity::class.java))
+        }
     }
 }
